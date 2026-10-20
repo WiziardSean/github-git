@@ -1,0 +1,447 @@
+/* ==========================================================================
+   Design System & Global Variables
+   ========================================================================== */
+:root {
+  --primary: #1b365d;       /* Deep Navy */
+  --primary-light: #2c5282;
+  --accent: #b8860b;        /* Warm Gold */
+  --accent-light: #fef08a;
+  --bg-main: #f8fafc;       /* Light Slate Background */
+  --bg-card: #ffffff;
+  --text-main: #0f172a;     /* Very Dark Slate */
+  --text-muted: #64748b;    /* Medium Muted Gray */
+  --border: #e2e8f0;        /* Subtle Border Gray */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Theme Support (Auto-detect or class-toggle) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #334155;
+    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   Top Announcement Bar & Hero Header
+   ========================================================================== */
+.announcement {
+  background: var(--primary);
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.announcement strong {
+  color: var(--accent);
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%);
+  color: #ffffff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge {
+  background: rgba(184, 134, 11, 0.2);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  color: #94a3b8;
+  font-size: 1.05rem;
+  max-width: 550px;
+  margin-bottom: 32px;
+}
+
+/* ==========================================================================
+   Search Bar Component
+   ========================================================================== */
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.search-box input {
+  width: 100%;
+  padding: 16px 48px 16px 52px;
+  border-radius: var(--radius-lg);
+  border: 2px solid transparent;
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: 1rem;
+  box-shadow: var(--shadow-md);
+  outline: none;
+  transition: var(--transition);
+}
+
+.search-box input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.25);
+}
+
+.clear-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: none;
+}
+
+.clear-btn:hover {
+  color: var(--text-main);
+}
+
+/* Category Filter Pills */
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.pill {
+  background: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pill:hover, .pill.active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+/* ==========================================================================
+   Main Content & Sidebar Grid Layout
+   ========================================================================== */
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  flex: 1;
+}
+
+/* Sidebar TOC */
+.sidebar-card {
+  position: sticky;
+  top: 30px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-card h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.sidebar-card ul {
+  list-style: none;
+}
+
+.sidebar-card li {
+  margin-bottom: 8px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: block;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary);
+  background: rgba(27, 54, 93, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav-link:hover, .nav-link.active {
+    color: var(--accent);
+    background: rgba(184, 134, 11, 0.15);
+  }
+}
+
+/* ==========================================================================
+   FAQ Accordion Components (<details> & <summary>)
+   ========================================================================== */
+.faq-group {
+  margin-bottom: 40px;
+}
+
+.group-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+
+@media (prefers-color-scheme: dark) {
+  .group-title {
+    color: var(--accent);
+  }
+}
+
+/* The native details accordion card */
+.faq-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.faq-card:hover {
+  border-color: var(--accent);
+}
+
+.faq-card[open] {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+/* Summary header styling */
+summary {
+  padding: 18px 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  list-style: none; /* Remove default marker */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+summary::-webkit-details-marker {
+  display: none; /* Webkit browser marker fix */
+}
+
+.faq-question {
+  color: var(--text-main);
+  padding-right: 16px;
+}
+
+/* Accordion indicator icon */
+summary .icon {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  transition: transform 0.25s ease;
+}
+
+.faq-card[open] summary .icon {
+  transform: rotate(45deg); /* Turns '+' into 'x' */
+}
+
+/* Answer Body */
+.faq-answer {
+  padding: 0 20px 20px 20px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  border-top: 1px dashed var(--border);
+  padding-top: 16px;
+  margin-top: 0;
+}
+
+.faq-answer ul, .faq-answer ol {
+  margin-left: 20px;
+  margin-top: 8px;
+}
+
+.faq-answer li {
+  margin-bottom: 6px;
+}
+
+.faq-answer a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.faq-answer code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  margin: 10px 0;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* No Results Container */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+}
+
+.no-results-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.no-results.hidden {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 16px;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none; /* Hide TOC on mobile screens */
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+}

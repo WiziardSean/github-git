@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation & FAQ Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="announcement">
+    <span>🚀 <strong>SES Hub v2.0 is live!</strong> Check out our updated deployment guides below.</span>
+  </aside>
+
+  <!-- Header & Search Banner -->
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="badge">Help Center & Docs</div>
+      <h1>How can we help you today?</h1>
+      <p>Search our knowledge base or browse frequently asked questions below.</p>
+      
+      <!-- Interactive Search Box -->
+      <div class="search-box">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="faq-search" placeholder="Type keywords (e.g., git, vercel, budget, account)..." aria-label="Search FAQs" />
+        <button id="clear-search" class="clear-btn" aria-label="Clear search">&times;</button>
+      </div>
+
+      <!-- Quick Category Pills -->
+      <div class="category-pills" id="category-pills">
+        <button class="pill active" data-category="all">All Questions</button>
+        <button class="pill" data-category="getting-started">Getting Started</button>
+        <button class="pill" data-category="git-github">Git & GitHub</button>
+        <button class="pill" data-category="deployment">Cloud Deployment</button>
+        <button class="pill" data-category="society-info">Club Governance</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="container layout">
+    
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" aria-label="Table of Contents">
+      <div class="sidebar-card">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="#getting-started" class="nav-link active">Getting Started</a></li>
+          <li><a href="#git-github" class="nav-link">Git & GitHub Workflow</a></li>
+          <li><a href="#deployment" class="nav-link">Cloud Deployment</a></li>
+          <li><a href="#society-info" class="nav-link">Club Governance & Budget</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- FAQ Accordion Sections -->
+    <section class="content">
+      
+      <!-- No Results Message -->
+      <div id="no-results" class="no-results hidden">
+        <div class="no-results-icon">🔍</div>
+        <h3>No matching answers found</h3>
+        <p>Try adjusting your search terms or selecting a different category filter.</p>
+      </div>
+
+      <!-- Section 1: Getting Started -->
+      <div class="faq-group" id="getting-started" data-category="getting-started">
+        <h2 class="group-title">Getting Started</h2>
+        
+        <details class="faq-card">
+          <summary>
+            <span class="faq-question">What software do I need to install before the workshop?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>You should have the following tools installed on your computer:</p>
+            <ul>
+              <li><strong>Git:</strong> Installed from <a href="https://git-scm.com" target="_blank" rel="noopener">git-scm.com</a>.</li>
+              <li><strong>Code Editor:</strong> VS Code or VSCodium.</li>
+              <li><strong>GitHub Account:</strong> A free account registered on <a href="https://github.com" target="_blank" rel="noopener">github.com</a>.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>
+            <span class="faq-question">Is prior coding experience required to join the Software Engineering Society?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Not at all! We welcome students of all skill levels across all degree programs at Pan Africa Christian University. Our sessions range from fundamental beginner tracks to advanced software architecture workshops.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Section 2: Git & GitHub Workflow -->
+      <div class="faq-group" id="git-github" data-category="git-github">
+        <h2 class="group-title">Git & GitHub Workflow</h2>
+
+        <details class="faq-card">
+          <summary>
+            <span class="faq-question">What is the difference between Git and GitHub?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p><strong>Git</strong> is a local command-line tool that tracks version history and changes in your code repository. <strong>GitHub</strong> is a web-based cloud platform that hosts your Git repositories, enabling collaboration, code review, and cloud deployments.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>
+            <span class="faq-question">How do I fix a "Permission denied (publickey)" error when pushing?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>This occurs when GitHub cannot authenticate your computer. You can resolve it by either:</p>
+            <ol>
+              <li>Generating an SSH key (`ssh-keygen`) and adding it to your GitHub Account Settings under <em>SSH and GPG keys</em>.</li>
+              <li>Switching your remote URL to HTTPS mode using <code>git remote set-url origin https://github.com/USERNAME/REPO.git</code> and authenticating via browser/Personal Access Token.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>
+            <span class="faq-question">How do I update my local repo after changes are made on GitHub?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Run the pull command in your terminal inside your project directory:</p>
+            <pre><code>git pull origin main</code></pre>
+            <p>This fetches and merges the latest changes from the remote repository into your local branch.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Section 3: Cloud Deployment -->
+      <div class="faq-group" id="deployment" data-category="deployment">
+        <h2 class="group-title">Cloud Deployment</h2>
+
+        <details class="faq-card">
+          <summary>
+            <span class="faq-question">Should I use Vercel or Netlify for my project?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Both services offer free tiers with continuous integration from GitHub:</p>
+            <ul>
+              <li><strong>Vercel:</strong> Best suited for modern JavaScript frameworks like Next.js, React, and Vite applications.</li>
+              <li><strong>Netlify:</strong> Ideal for static HTML/CSS/JS websites, drag-and-drop quick deploys, and form handling.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>
+            <span class="faq-question">Will my live site automatically update when I push code to GitHub?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes! Once you link your GitHub repository to Vercel or Netlify, every new commit pushed to the <code>main</code> branch triggers an automatic cloud build and deployment.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Section 4: Club Governance & Budget -->
+      <div class="faq-group" id="society-info" data-category="society-info">
+        <h2 class="group-title">Club Governance & Operations</h2>
+
+        <details class="faq-card">
+          <summary>
+            <span class="faq-question">How is the club's budget administered?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>The Software Engineering Society operates under an institutional semester allocation from Pan Africa Christian University. All expense requisitions require joint dual authorization from the Treasurer and the Faculty Patron.</p>
+          </div>
+        </details>
+
+        <details class="faq-card">
+          <summary>
+            <span class="faq-question">How can I obtain a copy of the official SES Constitution?</span>
+            <span class="icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>The official constitution is available upon request through the club Secretary or via our official document archive provided during general meetings.</p>
+          </div>
+        </details>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Software Engineering Society — Pan Africa Christian University.</p>
+      <div class="footer-links">
+        <a href="#getting-started">Docs</a>
+        <a href="#git-github">Git Guide</a>
+        <a href="#deployment">Deployment</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
